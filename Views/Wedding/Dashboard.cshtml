@@ -22,9 +22,25 @@
     @foreach (var wedding in Model)
     {
         <tr>
-        <td>@wedding.Bride1 & @wedding.Bride2</td>
+        <td><a href="/wedding/@wedding.WeddingId">
+        @wedding.Bride1 & @wedding.Bride2
+        </a></td>
         <td>@wedding.Date</td>
         <td>@wedding.RSVP.Count()</td>
+        <td>
+            @if (wedding.UserId == ViewBag.UserId)
+            {
+                <a href="/wedding/@wedding.WeddingId/delete">Delete</a>
+            }
+            else if (wedding.RSVP.Any(i => i.Guest.UserId == ViewBag.UserId))
+            {
+                <a href="/wedding/@wedding.WeddingId/rsvp">Un-RSVP</a>
+            }
+            else
+            {
+                <a href="/wedding/@wedding.WeddingId/rsvp">RSVP</a>
+            }
+        </td>
         </tr>
     }
 </table>

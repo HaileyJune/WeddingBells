@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using UpdatedLogReg.Models;
 
 namespace WeddingBells.Models
 {
@@ -9,6 +10,9 @@ public class Wedding
 {
     [Key]
     public int WeddingId {get;set;}
+
+    public int UserId {get;set;}
+    public UserObject Creator {get;set;}
     
     [Required]
     [MinLength(2)]

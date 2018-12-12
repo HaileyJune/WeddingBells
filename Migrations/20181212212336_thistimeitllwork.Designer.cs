@@ -9,8 +9,8 @@ using WeddingBells.Models;
 namespace WeddingBells.Migrations
 {
     [DbContext(typeof(WeddingContext))]
-    [Migration("20181212200931_okaymaybeifixedit")]
-    partial class okaymaybeifixedit
+    [Migration("20181212212336_thistimeitllwork")]
+    partial class thistimeitllwork
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -79,7 +79,11 @@ namespace WeddingBells.Migrations
 
                     b.Property<DateTime>("Date");
 
+                    b.Property<int>("UserId");
+
                     b.HasKey("WeddingId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Weddings");
                 });
@@ -94,6 +98,14 @@ namespace WeddingBells.Migrations
                     b.HasOne("WeddingBells.Models.Wedding", "Wedding")
                         .WithMany("RSVP")
                         .HasForeignKey("WeddingID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("WeddingBells.Models.Wedding", b =>
+                {
+                    b.HasOne("UpdatedLogReg.Models.UserObject", "Creator")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618

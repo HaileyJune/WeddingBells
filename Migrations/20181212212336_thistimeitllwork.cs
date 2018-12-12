@@ -4,7 +4,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace WeddingBells.Migrations
 {
-    public partial class okaymaybeifixedit : Migration
+    public partial class thistimeitllwork : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -32,6 +32,7 @@ namespace WeddingBells.Migrations
                 {
                     WeddingId = table.Column<int>(nullable: false)
                         .Annotation("MySql:ValueGenerationStrategy", MySqlValueGenerationStrategy.IdentityColumn),
+                    UserId = table.Column<int>(nullable: false),
                     Bride1 = table.Column<string>(nullable: false),
                     Bride2 = table.Column<string>(nullable: false),
                     Date = table.Column<DateTime>(nullable: false),
@@ -40,6 +41,12 @@ namespace WeddingBells.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Weddings", x => x.WeddingId);
+                    table.ForeignKey(
+                        name: "FK_Weddings_Users_UserId",
+                        column: x => x.UserId,
+                        principalTable: "Users",
+                        principalColumn: "UserId",
+                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -77,6 +84,11 @@ namespace WeddingBells.Migrations
                 name: "IX_RSVPs_WeddingID",
                 table: "RSVPs",
                 column: "WeddingID");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Weddings_UserId",
+                table: "Weddings",
+                column: "UserId");
         }
 
         protected override void Down(MigrationBuilder migrationBuilder)
@@ -85,10 +97,10 @@ namespace WeddingBells.Migrations
                 name: "RSVPs");
 
             migrationBuilder.DropTable(
-                name: "Users");
+                name: "Weddings");
 
             migrationBuilder.DropTable(
-                name: "Weddings");
+                name: "Users");
         }
     }
 }

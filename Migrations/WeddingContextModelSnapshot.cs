@@ -77,7 +77,11 @@ namespace WeddingBells.Migrations
 
                     b.Property<DateTime>("Date");
 
+                    b.Property<int>("UserId");
+
                     b.HasKey("WeddingId");
+
+                    b.HasIndex("UserId");
 
                     b.ToTable("Weddings");
                 });
@@ -92,6 +96,14 @@ namespace WeddingBells.Migrations
                     b.HasOne("WeddingBells.Models.Wedding", "Wedding")
                         .WithMany("RSVP")
                         .HasForeignKey("WeddingID")
+                        .OnDelete(DeleteBehavior.Cascade);
+                });
+
+            modelBuilder.Entity("WeddingBells.Models.Wedding", b =>
+                {
+                    b.HasOne("UpdatedLogReg.Models.UserObject", "Creator")
+                        .WithMany()
+                        .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade);
                 });
 #pragma warning restore 612, 618
