@@ -28,5 +28,11 @@ namespace WeddingBells.Controllers
                                     .ToList();
             return View(AllTheInfo);
         }
+        [HttpPost("create")]
+        public IActionResult Create(Wedding newWedding)
+        {
+            
+            return View();
+        }
     }
 }

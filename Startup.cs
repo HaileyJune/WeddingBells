@@ -5,9 +5,10 @@ using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Configuration;
 using UpdatedLogReg.Models;
+using WeddingBells.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace UpdatedLogReg
+namespace WeddingBells
 {
     public class Startup
     {
@@ -22,7 +23,7 @@ namespace UpdatedLogReg
             // Add framework services.
             services.AddMvc();
             services.AddSession();
-            services.AddDbContext<LogRegContext>(options => options.UseMySql(Configuration["DBInfo:ConnectionString"]));
+            services.AddDbContext<WeddingContext>(options => options.UseMySql(Configuration["DBInfo:ConnectionString"]));
 
         }
 

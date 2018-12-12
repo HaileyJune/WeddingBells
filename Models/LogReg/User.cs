@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using WeddingBells.Models;
     
 
 namespace UpdatedLogReg.Models
@@ -28,7 +29,6 @@ public class UserObject
     public string Password {get;set;}
     public DateTime CreatedAt {get;set;} = DateTime.Now;
     public DateTime UpdatedAt {get;set;} = DateTime.Now;
-
     public List<RSVP> RSVP {get;set;}
     // Will not be mapped to your users table!
     [NotMapped]

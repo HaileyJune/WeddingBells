@@ -6,15 +6,16 @@ using Microsoft.EntityFrameworkCore;
 using UpdatedLogReg.Models;
 using System.Linq;
 using Microsoft.AspNetCore.Identity;
+using WeddingBells.Models;
 
 namespace UpdatedLogReg.Controllers
 {
-    public class LogRegController : Controller
+    public class WeddingController : Controller
 {
-    private LogRegContext dbContext;
+    private WeddingContext dbContext;
 
     // here we can "inject" our context service into the constructor
-    public LogRegController(LogRegContext context)
+    public WeddingController(WeddingContext context)
     {
         dbContext = context;
     }
