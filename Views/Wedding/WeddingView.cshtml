@@ -1,0 +1,32 @@
+@{
+    ViewData["Title"] = "Wedding Page";
+}
+@using WeddingBells.Models;
+@model Wedding
+
+<div class="container">
+    <div class="row">
+        <h1>@Model.Bride1 and @Model.Bride2 's Wedding</h1>
+        <div>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Log Out</a>
+        </div>
+    </div>
+
+    <div class="row">
+        <div>
+        <h4>Date: @Model.Date</h4>
+        <h4>Guests: </h4>
+
+        @foreach (var rsvp in Model.RSVP)
+        {
+            <p>
+                @rsvp.Guest.FirstName @rsvp.Guest.LastName
+            </p>
+        }
+        </div>
+        <div>
+            <!-- map goes here -->
+        </div>
+    </div>
+</div>

@@ -1,0 +1,46 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+@namespace WeddingBells.Models;
+<div class="container">
+    <div class="row">
+        <h1>Plan A Wedding</h1>
+        <div>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/logout">Log Out</a>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div>
+            <form asp-action="Create" asp-controller="Wedding" method="POST">
+    
+    <span asp-validation-for="Bride1"></span>
+    <div></div>
+    <label asp-for="Bride1"></label>
+    <input asp-for="Bride1">
+    <div></div>
+
+    <span asp-validation-for="Bride2"></span>
+    <div></div>
+    <label asp-for="Bride2"></label>
+    <input asp-for="Bride2">
+    <div></div>
+    
+    <span asp-validation-for="Date"></span>
+    <div></div>
+    <label asp-for="Date"></label>
+    <input asp-for="Date">
+    <div></div>
+    
+    <span asp-validation-for="Address"></span>
+    <div></div>
+    <label asp-for="Address"></label>
+    <input asp-for="Address">
+    <div></div>
+
+    <input type="Submit" value="They Getting Married!">
+        </div>
+    </div>
+</div>

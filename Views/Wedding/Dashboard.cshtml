@@ -1,0 +1,30 @@
+@{
+    ViewData["Title"] = "Dashboard";
+}
+@model List<Wedding>
+<div class="container">
+    <div class="row">
+        <h1>Welcome to the Wedding Planner</h1>
+        <div>
+            <a href="/logout">Log Out</a>
+        </div>
+    </div>
+</div>
+
+<table>
+    <tr>
+        <th>Wedding</th>
+        <th>Date</th>
+        <th>Guests</th>
+        <th>Action</th>
+    </tr>
+
+    @foreach (var wedding in Model)
+    {
+        <tr>
+        <td>@wedding.Bride1 & @wedding.Bride2</td>
+        <td>@wedding.Date</td>
+        <td>@wedding.RSVP.Count()</td>
+        </tr>
+    }
+</table>
