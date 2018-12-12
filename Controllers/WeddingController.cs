@@ -28,11 +28,27 @@ namespace WeddingBells.Controllers
                                     .ToList();
             return View(AllTheInfo);
         }
+        [HttpGet]
+        [Route("new")]
+        public IActionResult New()
+        {
+            return View();
+        }
         [HttpPost("create")]
         public IActionResult Create(Wedding newWedding)
         {
-            
-            return View();
+            if(ModelState.IsValid)
+            {
+                //Save your user object to the database
+                dbContext.Add(newWedding);
+                dbContext.SaveChanges();
+                return Redirect("/dashboard"); //This doesn't exist yet
+            }
+            // other code
+            else
+            {
+                return View("New");
+            }
         }
     }
 }
